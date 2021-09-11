@@ -22,3 +22,33 @@ def makeAnagram(a, b):
     for letter in letters:
         n_deletions += abs(letter_count_a.get(letter,0)-letter_count_b.get(letter,0))
     return n_deletions
+
+# https://www.hackerrank.com/challenges/alternating-characters/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings
+def alternatingCharacters(s):
+    n_deletion = 0
+    for i in range(1, len(s)):
+        if s[i-1] == s[i]:
+            n_deletion += 1
+    return n_deletion
+
+# https://www.hackerrank.com/challenges/sherlock-and-valid-string/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings
+def isValid(s):
+    count_letters = {}
+    has_only_unique = True
+    for letter in s:
+        count_letters[letter] = count_letters.get(letter, 0) + 1
+    number_occurence = {}
+    ks = set()
+    for k, v in count_letters.items():
+        number_occurence[v] = number_occurence.get(v, 0)+1
+        ks.add(v)
+    print(count_letters)
+    print(number_occurence)
+    print(ks)
+    if len(ks) == 1:
+        return 'YES' #all appears same num of time
+    elif len(ks) == 2:
+        if max(ks) == min(ks) +1  and number_occurence[max(ks)] == 1:
+            return 'YES'
+        elif number_occurence[min(ks)] == 1:
+            return 'YES'
