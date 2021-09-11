@@ -52,3 +52,28 @@ def isValid(s):
             return 'YES'
         elif number_occurence[min(ks)] == 1:
             return 'YES'
+# https://www.hackerrank.com/challenges/balanced-brackets/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=stacks-queues
+def isBalanced(s):
+    stack = []
+    for l in s:
+        if l in '{[(':
+            stack.append(l)
+        elif l == ']':
+            if len(stack) >0 and stack[-1] == '[':
+                stack.pop(-1)
+            else:
+                return 'NO'
+        elif l == '}':
+            if len(stack) >0 and stack[-1] == '{':
+                stack.pop(-1)
+            else:
+                return 'NO'    
+        elif l == ')':
+            if len(stack) >0 and stack[-1] == '(':
+                stack.pop(-1)
+            else:
+                return 'NO' 
+    if len(stack) == 0:
+        return 'YES'
+    else:
+        return 'NO'
