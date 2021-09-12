@@ -115,3 +115,35 @@ def maximumPerimeterTriangle(sticks):
         if sticks[i] < sticks[i-1] + sticks[i-2]:
             return [sticks[i-2] , sticks[i-1] , sticks[i]]
     return [-1] 
+
+# https://www.hackerrank.com/challenges/sherlock-and-the-beast/problem
+# greedy
+def decentNumber(n):
+    n3 = 0
+    n5 = n
+    while True:
+        if n5 % 3 == 0:
+            print('5'*n5 + '3'* n3)
+            break
+        n5 -= 5
+        n3 += 5
+        if n3 > n:
+            print('-1')
+            break
+
+# https://www.hackerrank.com/challenges/priyanka-and-toys/problem
+# greedy
+def toys(w):
+    w.sort()
+    i = 0
+    n_cont = 0
+    while True:
+        if i >= len(w):
+            break
+        min_v = w[i]
+        i += 1
+        n_cont += 1
+        while True:
+            if i >= len(w) or w[i] > min_v + 4:
+                break
+            i += 1
