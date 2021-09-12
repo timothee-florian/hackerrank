@@ -147,3 +147,33 @@ def toys(w):
             if i >= len(w) or w[i] > min_v + 4:
                 break
             i += 1
+
+# https://www.hackerrank.com/challenges/largest-permutation/problem
+# greedy
+# index dictionary
+def largestPermutation(k, arr):
+    s_arr = sorted(arr)[::-1]
+    d_arr = {}
+    for i, v in enumerate(arr): # use to find index, faster then .items
+        d_arr[v] = i
+        
+    n_swap = 0
+    if s_arr == arr or k >= len(arr):
+        return s_arr
+    for i in range(len(arr)):
+        v = arr[i]
+        vs = s_arr[i]
+        if v != vs:
+            n_swap += 1
+            if n_swap > k:
+                break
+            index1 = d_arr[v]
+            index2 = d_arr[vs]
+            
+            temp = d_arr[v]
+            d_arr[v] = d_arr[vs]
+            d_arr[vs] = temp
+            
+            arr[index2] = v
+            arr[index1] = vs
+    return arr
