@@ -77,3 +77,33 @@ def isBalanced(s):
         return 'YES'
     else:
         return 'NO'
+
+# https://www.hackerrank.com/challenges/jim-and-the-orders/problem
+# greedy
+def jimOrders(orders):
+    # Write your code here
+    delivery_time = [(sum(x), i) for i, x in enumerate(orders)]
+    delivery_time.sort()
+    customers = [x[1]+1 for x in delivery_time]
+    return customers
+
+# https://www.hackerrank.com/challenges/two-arrays/problem
+# greedy
+def twoArrays(k, A, B):
+    A.sort()
+    B.sort()
+    B = B[::-1]
+    for i in range(len(A)):
+        if A[i] + B[i] < k:
+                return 'NO'
+    return 'YES'
+
+# https://www.hackerrank.com/challenges/marcs-cakewalk/problem
+# greedy
+def marcsCakewalk(calorie):
+    # Write your code here
+    calorie.sort()
+    miles = 0
+    for i, c in enumerate(calorie[::-1]):
+        miles += c * 2 ** i
+    return miles
