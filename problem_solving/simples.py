@@ -107,3 +107,11 @@ def marcsCakewalk(calorie):
     for i, c in enumerate(calorie[::-1]):
         miles += c * 2 ** i
     return miles
+# https://www.hackerrank.com/challenges/maximum-perimeter-triangle/problem
+# greedy
+def maximumPerimeterTriangle(sticks):
+    sticks.sort()
+    for i in range(len(sticks)-1, 1, -1):
+        if sticks[i] < sticks[i-1] + sticks[i-2]:
+            return [sticks[i-2] , sticks[i-1] , sticks[i]]
+    return [-1] 
