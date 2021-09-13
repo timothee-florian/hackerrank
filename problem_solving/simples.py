@@ -261,3 +261,20 @@ def acmTeam(topic):
         elif number_known_topic == max_known:
             n_team += 1
     return [max_known, n_team]
+
+# https://www.hackerrank.com/challenges/minimum-distances/problem
+# implementation
+def minimumDistances(a):
+    # Write your code here
+    values_indexes = {}
+    for i, v in enumerate(a):
+        values_indexes[v] = values_indexes.get(v, []) + [i]
+    min_distance = float('inf')
+    exist = False
+    for v in values_indexes.values():
+        if len(v)>1:
+            min_distance = min(min_distance, max(v)- min(v))
+            exist =True
+    if exist:
+        return min_distance
+    return -1
