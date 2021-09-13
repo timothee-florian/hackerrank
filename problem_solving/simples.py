@@ -195,7 +195,7 @@ def pickingNumbers(a):
 
 # https://www.hackerrank.com/challenges/jumping-on-the-clouds-revisited/problem
 # Implemetation
-def jumpingOnClouds(c, k):
+def jumpingOnClouds2(c, k):
     n = len(c)
     energy = 100
     i = 0
@@ -218,3 +218,46 @@ def cutTheSticks(arr):
         to_cut= arr.pop(0)
         arr = [a - to_cut for a in arr if a - to_cut > 0]
     return lengths
+
+# https://www.hackerrank.com/challenges/jumping-on-the-clouds/problem
+# implementation
+def jumpingOnClouds(c):
+    n_jump = 1
+    i = 0
+    while i +2 < len(c)-1:
+        n_jump += 1
+        if c[i+2] == 1:
+            i += 1
+        else:
+            i+=2
+    return n_jump
+
+# https://www.hackerrank.com/challenges/equality-in-a-array/problem
+# implementation
+def equalizeArray(arr):
+    count_values = {}
+    for a in arr:
+        count_values[a] = count_values.get(a, 0) +1
+    max_sames = 0
+    for n in count_values.values():
+        max_sames = max(max_sames, n)
+    return len(arr) - max_sames
+
+# https://www.hackerrank.com/challenges/acm-icpc-team/problem
+# implementation, set, dict, union  
+# Strangely brut force works
+def acmTeam(topic):
+    know = [{i for i, v in enumerate(t) if v == '1'} for t in topic]
+    team_known = {}
+    for i in range(1, len(topic)):
+        for j in range(i):
+            team_known[(i, j)] = len(know[i].union(know[j]))
+    max_known = 0
+    n_team = 0
+    for number_known_topic in team_known.values():
+        if number_known_topic > max_known:
+            max_known = number_known_topic
+            n_team = 1
+        elif number_known_topic == max_known:
+            n_team += 1
+    return [max_known, n_team]
