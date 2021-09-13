@@ -177,3 +177,44 @@ def largestPermutation(k, arr):
             arr[index2] = v
             arr[index1] = vs
     return arr
+
+# https://www.hackerrank.com/challenges/picking-numbers/problem
+# implemetation
+def pickingNumbers(a):
+    # Write your code here
+    values = sorted(list(set(a)))
+    count_v = {}
+    max_length = 0
+    for v in a:
+        count_v[v] = count_v.get(v, 0) + 1
+    for i in range(len(values)):
+        max_length = max(max_length, count_v[values[i]])
+        if i>= 1 and values[i] - values[i-1] == 1:
+            max_length = max(max_length, count_v[values[i]] + count_v[values[i-1]])
+    return max_length
+
+# https://www.hackerrank.com/challenges/jumping-on-the-clouds-revisited/problem
+# Implemetation
+def jumpingOnClouds(c, k):
+    n = len(c)
+    energy = 100
+    i = 0
+    while True:
+        energy -= 1
+        if c[i] == 1:
+            energy -= 2
+        i = (i + k)%n
+        if i == 0:
+            break
+    return energy
+
+# https://www.hackerrank.com/challenges/cut-the-sticks/problem
+# implementation
+def cutTheSticks(arr):
+    arr.sort()
+    lengths = []
+    while len(arr)>0:
+        lengths += [len(arr)]
+        to_cut= arr.pop(0)
+        arr = [a - to_cut for a in arr if a - to_cut > 0]
+    return lengths
