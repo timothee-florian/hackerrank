@@ -1,4 +1,5 @@
 -- https://www.hackerrank.com/challenges/interviews/problem
+-- Need to make one one with group by
 select c.contest_id, c.hacker_id, c.name, 
 IFNULL(sum(total_submissions), 0) as total_submissions, IFNULL(sum(total_accepted_submissions), 0) as total_accepted_submissions,
 IFNULL(sum(total_views), 0) as total_views, IFNULL(sum(total_unique_views), 0) as total_unique_views
