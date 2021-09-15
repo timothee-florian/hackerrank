@@ -21,5 +21,5 @@ object Solution extends App {
 // https://www.hackerrank.com/challenges/fp-sum-of-odd-elements/problem
 // sum odd numbers
 def f(arr:List[Int]):Int = {
-    return arr.filter(x => x % 2 == 1).reduce((x, y) => x + y)
+    return arr.filter(x => x%2 != 0).reduce(_ + _)
 }
