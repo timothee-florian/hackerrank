@@ -278,3 +278,19 @@ def minimumDistances(a):
     if exist:
         return min_distance
     return -1
+
+# https://www.hackerrank.com/challenges/happy-ladybugs/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
+def happyLadybugs(b):
+    count_carac = {}
+    for l in b:
+        count_carac[l] = count_carac.get(l, 0) + 1
+    for k, v in count_carac.items():
+        if k != '_' and v == 1:
+            return 'NO'
+    if len(count_carac.keys())==1 and count_carac.get('_', 0) != 0:
+        return 'YES'
+    if count_carac.get('_', 0) == 0:
+        for i in range(1, len(b)-1):
+            if b[i] != b[i-1] and b[i] != b[i+1]:
+                return 'NO'
+    return 'YES'
