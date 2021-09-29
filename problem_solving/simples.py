@@ -67,12 +67,12 @@ def isBalanced(s):
             if len(stack) >0 and stack[-1] == '{':
                 stack.pop(-1)
             else:
-                return 'NO'    
+                return 'NO'
         elif l == ')':
             if len(stack) >0 and stack[-1] == '(':
                 stack.pop(-1)
             else:
-                return 'NO' 
+                return 'NO'
     if len(stack) == 0:
         return 'YES'
     else:
@@ -114,7 +114,7 @@ def maximumPerimeterTriangle(sticks):
     for i in range(len(sticks)-1, 1, -1):
         if sticks[i] < sticks[i-1] + sticks[i-2]:
             return [sticks[i-2] , sticks[i-1] , sticks[i]]
-    return [-1] 
+    return [-1]
 
 # https://www.hackerrank.com/challenges/sherlock-and-the-beast/problem
 # greedy
@@ -156,7 +156,7 @@ def largestPermutation(k, arr):
     d_arr = {}
     for i, v in enumerate(arr): # use to find index, faster then .items
         d_arr[v] = i
-        
+
     n_swap = 0
     if s_arr == arr or k >= len(arr):
         return s_arr
@@ -169,11 +169,11 @@ def largestPermutation(k, arr):
                 break
             index1 = d_arr[v]
             index2 = d_arr[vs]
-            
+
             temp = d_arr[v]
             d_arr[v] = d_arr[vs]
             d_arr[vs] = temp
-            
+
             arr[index2] = v
             arr[index1] = vs
     return arr
@@ -244,7 +244,7 @@ def equalizeArray(arr):
     return len(arr) - max_sames
 
 # https://www.hackerrank.com/challenges/acm-icpc-team/problem
-# implementation, set, dict, union  
+# implementation, set, dict, union
 # Strangely brut force works
 def acmTeam(topic):
     know = [{i for i, v in enumerate(t) if v == '1'} for t in topic]
@@ -279,6 +279,7 @@ def minimumDistances(a):
         return min_distance
     return -1
 
+
 # https://www.hackerrank.com/challenges/happy-ladybugs/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
 def happyLadybugs(b):
     count_carac = {}
@@ -294,3 +295,18 @@ def happyLadybugs(b):
             if b[i] != b[i-1] and b[i] != b[i+1]:
                 return 'NO'
     return 'YES'
+
+
+# https://www.hackerrank.com/challenges/fair-rations/problem
+# Trivial if realise that the even extremities can be remove impling that we need to go only one way
+def fairRations(B):
+    c = 0
+    for i in range(len(B[:-1])):
+        if B[i]%2 == 0:
+            continue
+
+        c += 2
+        B[i+1] = B[i+1] + 1
+    if B[-1] % 2 == 0:
+        return str(c)
+    return 'NO'
